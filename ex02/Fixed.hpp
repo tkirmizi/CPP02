@@ -6,7 +6,7 @@
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:12:13 by taha              #+#    #+#             */
-/*   Updated: 2025/02/07 13:12:24 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/07 13:21:11 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ class Fixed{
 		bool operator==(const Fixed &other) const;
 		bool operator!=(const Fixed &other) const;
 		
+		//Min max functions
+		// Static min-max functions
+		static Fixed& min(Fixed& x, Fixed& y);
+		static const Fixed& min(const Fixed& x, const Fixed& y);
+		static Fixed& max(Fixed& x, Fixed& y);
+		static const Fixed& max(const Fixed& x, const Fixed& y);
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& fixedObj);

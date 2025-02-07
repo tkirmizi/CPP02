@@ -6,7 +6,7 @@
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:12:21 by taha              #+#    #+#             */
-/*   Updated: 2025/02/07 13:31:11 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/07 15:48:53 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ Fixed& Fixed::operator=(const Fixed& other){
 Fixed::~Fixed(){}
 
 // Increment & Decrement
-Fixed& Fixed::operator++() {this->_nbr += 1 << _frbits; return *this;}
-Fixed Fixed::operator++(int) { Fixed old = *this; this->_nbr += 1 << _frbits; return old;}
-Fixed& Fixed::operator--() {this->_nbr -= 1 << _frbits; return *this;}
-Fixed Fixed::operator--(int) { Fixed old = *this; this->_nbr -= 1 << _frbits; return old;}
+Fixed& Fixed::operator++() {this->_nbr += 1; return *this;}
+Fixed Fixed::operator++(int) { Fixed old = *this; this->_nbr += 1; return old;}
+Fixed& Fixed::operator--() {this->_nbr -= 1; return *this;}
+Fixed Fixed::operator--(int) { Fixed old = *this; this->_nbr -= 1; return old;}
 
 //Comparision operators
 bool Fixed::operator>(const Fixed &other) const {return this->_nbr > other._nbr;}
@@ -65,13 +65,13 @@ Fixed Fixed::operator-(const Fixed &other) const {
 
 Fixed Fixed::operator*(const Fixed &other) const {
 	Fixed temp;
-	temp._nbr = _nbr * other._nbr;
+	 temp._nbr = (_nbr * other._nbr) >> _frbits;
 	return temp;
 }
 
 Fixed Fixed::operator/(const Fixed &other) const {
 	Fixed temp;
-	temp._nbr = _nbr / other._nbr;
+	 temp._nbr = (_nbr << _frbits) / other._nbr;
 	return temp;
 }
 

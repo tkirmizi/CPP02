@@ -6,7 +6,7 @@
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:12:21 by taha              #+#    #+#             */
-/*   Updated: 2025/02/07 12:03:24 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/07 13:13:35 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,35 @@ Fixed Fixed::operator/(const Fixed &other) const {
 	temp._nbr = _nbr / other._nbr;
 	return temp;
 }
+
+
+// Increment & Decrement
+Fixed& Fixed::operator++() {
+	this->_nbr += 1 << _frbits;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed old = *this;
+	this->_nbr += 1 << _frbits;
+	return old;
+}
+
+Fixed& Fixed::operator--() {
+	this->_nbr -= 1 << _frbits;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed old = *this;
+	this->_nbr -= 1 << _frbits;
+	return old;
+}
+
+//Comparision operators
+bool Fixed::operator>(const Fixed &other) const {return this->_nbr > other._nbr;}
+bool Fixed::operator<(const Fixed &other) const {return other > *this;}
+bool Fixed::operator>=(const Fixed &other) const {return !(*this < other);}
+bool Fixed::operator<=(const Fixed &other) const {return !(*this > other);}
+bool Fixed::operator==(const Fixed &other) const {return this->_nbr == other._nbr;}
+bool Fixed::operator!=(const Fixed &other) const {return !(*this == other);}

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 15:56:52 by tkirmizi          #+#    #+#             */
-/*   Updated: 2025/02/07 10:15:36 by taha             ###   ########.fr       */
+/*   Created: 2025/02/07 10:12:13 by taha              #+#    #+#             */
+/*   Updated: 2025/02/07 10:15:08 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-orthodox canonical class
-1. default const
-2. copy cost
-3. copy assing opr
-4. dest
-*/
-// 128	64	32	16	8	4	2	1
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
+#include <string>
+#include <iostream>
 
 
-#include "Fixed.hpp"
+class Fixed{
+	private:
+		int _nbr;
+		static const int _frbits = 8;
+	public:
+		Fixed(); // def constr
+		Fixed(const Fixed& other); // copy constr
+		Fixed& operator=(const Fixed& other); // copy assgn opr
+		~Fixed(); // destructor
+		int getRawbits(void) const;
+		void setRawbits(int const raw);
 
-int main(){
-	Fixed a;
-	Fixed b(a);
-	Fixed c;
+};
 
-	c = b;
-
-	std::cout << a.getRawbits() << std::endl;
-	std::cout << b.getRawbits() << std::endl;
-	std::cout << c.getRawbits() << std::endl;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: taha <taha@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 10:12:13 by taha              #+#    #+#             */
-/*   Updated: 2025/02/07 10:56:35 by taha             ###   ########.fr       */
+/*   Updated: 2025/02/07 11:55:04 by taha             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <cmath>
 
 
 class Fixed{
@@ -34,4 +35,5 @@ class Fixed{
 		int toInt( void ) const;
 };
 
+std::ostream& operator<<(std::ostream& os, const Fixed& fixedObj);
 #endif
